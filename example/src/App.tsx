@@ -1,18 +1,14 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'rn-chart-kit';
+import { QuadrantChart } from 'rn-chart-kit';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <QuadrantChart 
+        dotColor='#f00'
+        />
     </View>
   );
 }
