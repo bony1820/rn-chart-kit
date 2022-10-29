@@ -12,12 +12,19 @@ npm install rn-chart-kit
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { QuadrantChart } from 'rn-chart-kit';
+import { QuadrantChart, ProgressArc } from 'rn-chart-kit';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <QuadrantChart />
+      <ProgressArc
+        percent1={90}
+        percent2={70}
+        size={200}
+        gapGrid={5}
+        strokeWidth={20}
+        /> 
     </View>
   );
 }

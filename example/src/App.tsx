@@ -1,12 +1,22 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import { QuadrantChart } from 'rn-chart-kit';
+import {
+  // QuadrantChart,
+  ProgressArc,
+} from 'rn-chart-kit';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <QuadrantChart />
+      {/* <QuadrantChart /> */}
+      <ProgressArc
+        percent1={30}
+        percent2={50}
+        size={200}
+        gapGrid={5}
+        strokeWidth={20}
+      />
     </View>
   );
 }
@@ -14,8 +24,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
+    // backgroundColor: 'red'
   },
   box: {
     width: 60,
