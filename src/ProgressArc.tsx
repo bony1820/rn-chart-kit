@@ -12,6 +12,7 @@ export interface IProgressArcProps {
   colorChart1?: string;
   colorChart2?: string;
   colorChartBackground?: string;
+  chartSpacing?: number;
 }
 
 export default function ProgressArc(props: IProgressArcProps): JSX.Element {
@@ -23,11 +24,12 @@ export default function ProgressArc(props: IProgressArcProps): JSX.Element {
   const colorGrid = props.colorGrid as string;
   const colorChart1 = props.colorChart1 as string;
   const colorChart2 = props.colorChart2 as string;
+  const chartSpacing = props.chartSpacing as number;
   const colorChartBackground = props.colorChartBackground as string;
   const { PI, cos, sin } = Math;
   const r = (size - strokeWidth - 10) / 2;
-  const cx1 = size / 2 - 2;
-  const cx2 = size / 2 + 2;
+  const cx1 = size / 2 - chartSpacing;
+  const cx2 = size / 2 + chartSpacing;
   const cy = size / 2;
   const startAngle = PI / 2;
   const endAngle = -PI / 2;
@@ -76,7 +78,7 @@ export default function ProgressArc(props: IProgressArcProps): JSX.Element {
           />
         </Mask>
         <G id="group1">
-          <Rect x="0" y="0" width={size / 2} height={size} fill={colorChart1} />
+          <Rect x="0" y="0" width={size} height={size} fill={colorChart1} />
           {Array.from(
             { length: Math.round(size / gapGrid) },
             (_, v) => v * gapGrid
@@ -92,13 +94,7 @@ export default function ProgressArc(props: IProgressArcProps): JSX.Element {
           ))}
         </G>
         <G id="group2">
-          <Rect
-            x={size / 2 + 2}
-            y="0"
-            width={size / 2}
-            height={size}
-            fill={colorChart2}
-          />
+          <Rect x="0" y="0" width={size} height={size} fill={colorChart2} />
           {Array.from(
             { length: Math.round(size / gapGrid) },
             (_, v) => v * gapGrid
@@ -141,4 +137,5 @@ ProgressArc.defaultProps = {
   colorChart1: '#ED9390',
   colorChart2: '#F0B334',
   colorChartBackground: '#DAD9DA',
+  chartSpacing: 1,
 };
