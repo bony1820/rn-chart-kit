@@ -11,11 +11,12 @@ export default function App() {
     <View style={styles.container}>
       {/* <QuadrantChart /> */}
       <ProgressArc
-        percent1={30}
-        percent2={50}
+        percent1={90}
+        // percent2={70}
         size={200}
         gapGrid={5}
         strokeWidth={20}
+        single
       />
     </View>
   );

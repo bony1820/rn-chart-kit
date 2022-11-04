@@ -13,6 +13,7 @@ export interface IProgressArcProps {
   colorChart2?: string;
   colorChartBackground?: string;
   chartSpacing?: number;
+  single?: boolean;
 }
 
 export default function ProgressArc(props: IProgressArcProps): JSX.Element {
@@ -24,7 +25,7 @@ export default function ProgressArc(props: IProgressArcProps): JSX.Element {
   const colorGrid = props.colorGrid as string;
   const colorChart1 = props.colorChart1 as string;
   const colorChart2 = props.colorChart2 as string;
-  const chartSpacing = props.chartSpacing as number;
+  const chartSpacing = props?.single ? 0 : (props.chartSpacing as number);
   const colorChartBackground = props.colorChartBackground as string;
   const { PI, cos, sin } = Math;
   const r = (size - strokeWidth - 10) / 2;
@@ -39,13 +40,17 @@ export default function ProgressArc(props: IProgressArcProps): JSX.Element {
   const x2 = cx1 - r * cos(endAngle);
   const x22 = cx2 - r * cos(endAngle);
   const y2 = cy - r * sin(endAngle);
-  const d1 = `M ${x1} ${y1} A ${r} ${r} 0 0 0 ${x2} ${y2}`;
+  const d1 = props?.single
+    ? `M ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2} A ${r} ${r} 0 0 1 ${x1} ${y1}`
+    : `M ${x1} ${y1} A ${r} ${r} 0 0 0 ${x2} ${y2}`;
   const d2 = `M ${x11} ${y1} A ${r} ${r} 0 0 1 ${x22} ${y2}`;
-  const total = r * Math.abs(startAngle - endAngle);
+  const total = props?.single
+    ? r * 2 * PI
+    : r * Math.abs(startAngle - endAngle);
   const circumference1 = total * percent1;
   const circumference2 = total * percent2;
   return (
-    <Svg width={size} height={size}>
+    <Svg width={size} height={size} key={percent1 + percent2}>
       <Defs>
         <Mask
           id="mask1"
