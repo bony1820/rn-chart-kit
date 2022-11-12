@@ -9,9 +9,13 @@ export interface IProgressArcProps {
   size?: number;
   strokeWidth?: number;
   colorGrid?: string;
+  colorGrid1?: string;
+  colorGrid2?: string;
   colorChart1?: string;
   colorChart2?: string;
   colorChartBackground?: string;
+  colorChartBackground1?: string;
+  colorChartBackground2?: string;
   chartSpacing?: number;
   single?: boolean;
 }
@@ -23,10 +27,14 @@ export default function ProgressArc(props: IProgressArcProps): JSX.Element {
   const size = props.size as number;
   const strokeWidth = props.strokeWidth as number;
   const colorGrid = props.colorGrid as string;
+  const colorGrid1 = props.colorGrid1 as string;
+  const colorGrid2 = props.colorGrid2 as string;
   const colorChart1 = props.colorChart1 as string;
   const colorChart2 = props.colorChart2 as string;
   const chartSpacing = props?.single ? 0 : (props.chartSpacing as number);
   const colorChartBackground = props.colorChartBackground as string;
+  const colorChartBackground1 = props.colorChartBackground1 as string;
+  const colorChartBackground2 = props.colorChartBackground2 as string;
   const { PI, cos, sin } = Math;
   const r = (size - strokeWidth - 10) / 2;
   const cx1 = size / 2 - chartSpacing;
@@ -94,7 +102,7 @@ export default function ProgressArc(props: IProgressArcProps): JSX.Element {
               y1={0}
               x2={item}
               y2={size}
-              stroke={colorGrid}
+              stroke={colorGrid1 || colorGrid}
             />
           ))}
         </G>
@@ -110,19 +118,19 @@ export default function ProgressArc(props: IProgressArcProps): JSX.Element {
               y1={0}
               x2={item}
               y2={size}
-              stroke={colorGrid}
+              stroke={colorGrid2 || colorGrid}
             />
           ))}
         </G>
       </Defs>
       <Rect x="0" y="0" width={size} height={size} fill="none" />
       <Path
-        stroke={colorChartBackground}
+        stroke={colorChartBackground1 || colorChartBackground}
         fill="none"
         {...{ d: d1, strokeWidth }}
       />
       <Path
-        stroke={colorChartBackground}
+        stroke={colorChartBackground2 || colorChartBackground}
         fill="none"
         {...{ d: d2, strokeWidth }}
       />

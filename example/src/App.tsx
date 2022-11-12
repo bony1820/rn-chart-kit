@@ -12,11 +12,10 @@ export default function App() {
       {/* <QuadrantChart /> */}
       <ProgressArc
         percent1={90}
-        // percent2={70}
+        percent2={70}
         size={200}
         gapGrid={5}
         strokeWidth={20}
-        single
       />
     </View>
   );
