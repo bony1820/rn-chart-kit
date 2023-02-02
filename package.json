@@ -35,13 +35,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/tuyenbug/rn-chart-kit",
-  "author": "tuyenbug <tuyen.nguyen5@ntq-solution.com.vn> (https://github.com/tuyenbug/rn-chart-kit)",
+  "repository": "",
+  "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tuyenbug/rn-chart-kit/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/tuyenbug/rn-chart-kit#readme",
+  "homepage": "",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
